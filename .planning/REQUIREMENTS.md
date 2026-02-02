@@ -105,46 +105,46 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| API-01 | — | Pending |
-| API-02 | — | Pending |
-| API-03 | — | Pending |
-| PLAY-01 | — | Pending |
-| PLAY-02 | — | Pending |
-| PLAY-03 | — | Pending |
-| PLAY-04 | — | Pending |
-| PLAY-05 | — | Pending |
-| PLAY-06 | — | Pending |
-| PLAY-07 | — | Pending |
-| PLAY-08 | — | Pending |
-| PLAY-09 | — | Pending |
-| MINI-01 | — | Pending |
-| MINI-02 | — | Pending |
-| MINI-03 | — | Pending |
-| QUE-01 | — | Pending |
-| QUE-02 | — | Pending |
-| QUE-03 | — | Pending |
-| QUE-04 | — | Pending |
-| SRCH-01 | — | Pending |
-| SRCH-02 | — | Pending |
-| SRCH-03 | — | Pending |
-| PLIST-01 | — | Pending |
-| PLIST-02 | — | Pending |
-| PLIST-03 | — | Pending |
-| PLIST-04 | — | Pending |
-| PLIST-05 | — | Pending |
-| PLIST-06 | — | Pending |
-| REC-01 | — | Pending |
-| REC-02 | — | Pending |
-| DL-01 | — | Pending |
-| DL-02 | — | Pending |
-| DL-03 | — | Pending |
-| DL-04 | — | Pending |
+| API-01 | Phase 1 | Pending |
+| API-02 | Phase 1 | Pending |
+| API-03 | Phase 1 | Pending |
+| SRCH-01 | Phase 2 | Pending |
+| SRCH-02 | Phase 2 | Pending |
+| SRCH-03 | Phase 2 | Pending |
+| PLAY-01 | Phase 3 | Pending |
+| PLAY-02 | Phase 3 | Pending |
+| PLAY-03 | Phase 3 | Pending |
+| PLAY-04 | Phase 3 | Pending |
+| PLAY-05 | Phase 3 | Pending |
+| PLAY-06 | Phase 3 | Pending |
+| PLAY-07 | Phase 3 | Pending |
+| PLAY-08 | Phase 3 | Pending |
+| PLAY-09 | Phase 3 | Pending |
+| MINI-01 | Phase 3 | Pending |
+| MINI-02 | Phase 3 | Pending |
+| MINI-03 | Phase 3 | Pending |
+| QUE-01 | Phase 3 | Pending |
+| QUE-02 | Phase 3 | Pending |
+| QUE-03 | Phase 3 | Pending |
+| QUE-04 | Phase 3 | Pending |
+| DL-01 | Phase 4 | Pending |
+| DL-02 | Phase 4 | Pending |
+| DL-03 | Phase 4 | Pending |
+| DL-04 | Phase 4 | Pending |
+| PLIST-01 | Phase 4 | Pending |
+| PLIST-02 | Phase 4 | Pending |
+| PLIST-03 | Phase 4 | Pending |
+| PLIST-04 | Phase 4 | Pending |
+| PLIST-05 | Phase 4 | Pending |
+| PLIST-06 | Phase 4 | Pending |
+| REC-01 | Phase 4 | Pending |
+| REC-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 34 total
-- Mapped to phases: 0
-- Unmapped: 34
+- Mapped to phases: 34
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-26*
-*Last updated: 2026-03-26 after initial definition*
+*Last updated: 2026-03-26 after roadmap creation — all 34 requirements mapped to phases 1-4*
