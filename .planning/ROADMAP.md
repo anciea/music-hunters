@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — api/ scaffold: FastAPI app, auth, models, utils (TrackDTO, encode/decode, run_sync)
+- [x] 01-01-PLAN.md — api/ scaffold: FastAPI app, auth, models, utils (TrackDTO, encode/decode, run_sync)
 - [ ] 01-02-PLAN.md — GET /search endpoint with TTLCache, SongInfo->TrackDTO mapping
 - [ ] 01-03-PLAN.md — GET /stream/{track_id} (httpx proxy + Range forwarding) and GET /download/{track_id} (FileResponse + BackgroundTask cleanup); systemd service unit
 

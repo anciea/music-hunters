@@ -7,9 +7,9 @@
 
 ### Backend API
 
-- [ ] **API-01**: FastAPI backend exposes `/search` endpoint that accepts keyword query and returns unified results from all sources
-- [ ] **API-02**: FastAPI backend exposes `/stream` endpoint that returns playable audio URL for a given track
-- [ ] **API-03**: FastAPI backend exposes `/download` endpoint that returns audio file for local storage
+- [x] **API-01**: FastAPI backend exposes `/search` endpoint that accepts keyword query and returns unified results from all sources
+- [x] **API-02**: FastAPI backend exposes `/stream` endpoint that returns playable audio URL for a given track
+- [x] **API-03**: FastAPI backend exposes `/download` endpoint that returns audio file for local storage
 
 ### Playback
 
@@ -105,9 +105,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| API-01 | Phase 1 | Pending |
-| API-02 | Phase 1 | Pending |
-| API-03 | Phase 1 | Pending |
+| API-01 | Phase 1 | Complete |
+| API-02 | Phase 1 | Complete |
+| API-03 | Phase 1 | Complete |
 | SRCH-01 | Phase 2 | Pending |
 | SRCH-02 | Phase 2 | Pending |
 | SRCH-03 | Phase 2 | Pending |
