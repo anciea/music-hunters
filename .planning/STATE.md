@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 01-backend-api Plan 02 (Search endpoint)
-last_updated: "2026-03-27T01:35:45.060Z"
+status: verifying
+stopped_at: Completed 01-backend-api Plan 03 (Stream, Download, and systemd service)
+last_updated: "2026-03-27T01:40:24.585Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 
 Phase: 01 (backend-api) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-backend-api P01 | 7min | 3 tasks | 11 files |
 | Phase 01-backend-api P02 | 10min | 1 tasks | 1 files |
+| Phase 01-backend-api P03 | 3min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,8 @@ Recent decisions affecting current work:
 - [Phase 01-backend-api]: pycryptodomex required alongside pycryptodome — musicdl Deezer source uses Cryptodome namespace
 - [Phase 01-backend-api]: Conditional TTLCache: only cache search results when tracks list is non-empty to prevent locking out retries on total source failures
 - [Phase 01-backend-api]: Per-record try/except in SongInfo->TrackDTO mapping loop prevents one malformed SongInfo from dropping all tracks from that source
+- [Phase 01-backend-api]: Proxy-first streaming in /stream: httpx CDN proxy with Range forwarding, file fallback for opaque-stream sources — handles all 15 enabled sources without per-source branching
+- [Phase 01-backend-api]: _get_fresh_song_info and _download_to_temp centralized in stream.py, imported by download.py — single source of truth for fresh CDN URL logic
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T01:35:45.056Z
-Stopped at: Completed 01-backend-api Plan 02 (Search endpoint)
+Last session: 2026-03-27T01:40:24.582Z
+Stopped at: Completed 01-backend-api Plan 03 (Stream, Download, and systemd service)
 Resume file: None
