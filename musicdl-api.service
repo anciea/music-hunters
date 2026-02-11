@@ -1,0 +1,26 @@
+[Unit]
+Description=MusicDL API
+Documentation=https://github.com/zcjin/musicdl
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/musicdl
+Environment=MUSICDL_API_KEY=changeme
+Environment=MUSICDL_EXECUTOR_WORKERS=4
+ExecStart=/opt/musicdl/venv/bin/uvicorn api.main:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+# Deployer notes:
+# 1. Replace MUSICDL_API_KEY value with a strong random secret before enabling.
+# 2. Copy to /etc/systemd/system/musicdl-api.service
+# 3. Run: systemctl daemon-reload && systemctl enable musicdl-api && systemctl start musicdl-api
+# 4. View logs: journalctl -u musicdl-api -f
