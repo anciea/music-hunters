@@ -45,8 +45,13 @@ Plans:
   2. Each result card displays track title, artist name, album art, duration, and source platform badge
   3. The app shell has persistent bottom navigation and all main screens are reachable
   4. Tapping a search result begins playback (audio starts, even if player UI is minimal at this stage)
-**Plans**: TBD
+**Plans**: 3 plans
 **UI hint**: yes
+
+Plans:
+- [ ] 02-01-PLAN.md — Flutter project scaffold: pubspec, Freezed models, Dio+Retrofit API client, go_router 4-tab shell, dark theme
+- [ ] 02-02-PLAN.md — Search screen: AsyncNotifier, result list tiles, source badges, shimmer loading, empty/error states
+- [ ] 02-03-PLAN.md — Tap-to-play via just_audio /stream endpoint, mini player bar with play/pause control
 
 ### Phase 3: Audio Playback
 **Goal**: Users can play music with full controls, background audio, notification bar integration, and queue management
@@ -81,7 +86,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend API | 2/3 | In Progress|  |
-| 2. Flutter Shell + Search | 0/? | Not started | - |
+| 1. Backend API | 3/3 | Complete |  |
+| 2. Flutter Shell + Search | 0/3 | Planned | - |
 | 3. Audio Playback | 0/? | Not started | - |
 | 4. Library | 0/? | Not started | - |
