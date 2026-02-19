@@ -1,0 +1,52 @@
+name: musicdl
+description: MusicDL Mobile — unified music search and playback across 21+ platforms.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^3.3.1
+  riverpod_annotation: ^4.0.2
+
+  # Routing
+  go_router: ^17.1.0
+
+  # HTTP / API
+  dio: ^5.9.2
+  retrofit: ^4.9.2
+
+  # Audio playback
+  just_audio: ^0.10.5
+
+  # Images
+  cached_network_image: ^3.4.1
+
+  # UI
+  shimmer: ^3.0.0
+
+  # Models
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code generation
+  build_runner: ^2.13.1
+  retrofit_generator: ^10.2.1
+  freezed: ^3.2.5
+  json_serializable: ^6.9.5
+  riverpod_generator: ^4.0.3
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
