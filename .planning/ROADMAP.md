@@ -13,7 +13,7 @@ The existing Python musicdl library (21 platform adapters, HLS/DRM support) is w
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Backend API** - FastAPI adapter wrapping Python musicdl; search, stream, download endpoints live and callable
-- [ ] **Phase 2: Flutter Shell + Search** - Flutter project scaffold, navigation shell, and working search screen talking to Phase 1 API
+- [x] **Phase 2: Flutter Shell + Search** - Flutter project scaffold, navigation shell, and working search screen talking to Phase 1 API (completed 2026-03-27)
 - [ ] **Phase 3: Audio Playback** - Full audio stack (just_audio + audio_service), mini player, full player screen, queue management, background playback
 - [ ] **Phase 4: Library** - Downloads to local storage, offline playback, playlists (CRUD + reorder), and recent plays
 
@@ -87,6 +87,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Backend API | 3/3 | Complete |  |
-| 2. Flutter Shell + Search | 0/3 | Planned | - |
+| 2. Flutter Shell + Search | 3/3 | Complete   | 2026-03-27 |
 | 3. Audio Playback | 0/? | Not started | - |
 | 4. Library | 0/? | Not started | - |
