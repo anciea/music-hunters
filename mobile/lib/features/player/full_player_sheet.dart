@@ -6,6 +6,7 @@ import 'package:just_audio/just_audio.dart';
 
 import '../../core/providers/player_provider.dart';
 import '../../features/search/widgets/source_badge.dart';
+import 'queue_bottom_sheet.dart';
 import 'seek_bar.dart';
 
 /// Full-screen player overlay presented as a [DraggableScrollableSheet].
@@ -383,19 +384,7 @@ class FullPlayerSheet extends ConsumerWidget {
   }
 
   void _openQueueSheet(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => DraggableScrollableSheet(
-        initialChildSize: 0.6,
-        minChildSize: 0.3,
-        maxChildSize: 0.95,
-        builder: (context, scrollController) => _QueueBottomSheet(
-          scrollController: scrollController,
-        ),
-      ),
-    );
+    QueueBottomSheet.show(context);
   }
 }
 
@@ -457,93 +446,3 @@ class _FormatChip extends StatelessWidget {
   }
 }
 
-/// Minimal queue bottom sheet stub — opened from the queue button.
-///
-/// A proper queue UI will be built in Plan 03-03.  This stub shows a
-/// drag handle and empty state so the button is functional.
-class _QueueBottomSheet extends StatelessWidget {
-  const _QueueBottomSheet({required this.scrollController});
-
-  final ScrollController scrollController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      container: true,
-      label: 'Playback queue',
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF121212),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-        ),
-        child: Column(
-          children: [
-            // Drag handle
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Container(
-                  width: 32,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF424242),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-            ),
-            // Header
-            const Padding(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: Row(
-                children: [
-                  Text(
-                    'Queue',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Empty state placeholder
-            const Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.queue_music,
-                      size: 48,
-                      color: Color(0xFF424242),
-                    ),
-                    SizedBox(height: 16),
-                    Text(
-                      'Your queue is empty',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Long-press a search result to add songs.',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF9E9E9E),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
