@@ -25,11 +25,11 @@ Users can search and play music from any supported platform through a single, el
 - ✓ FastAPI backend wrapping existing Python music client logic — Validated in Phase 1: Backend API
 - ✓ Flutter Android app with Material Design UI — Validated in Phase 2: Flutter Shell + Search
 - ✓ Cross-platform music search with unified results display — Validated in Phase 2: Flutter Shell + Search
+- ✓ Background audio playback with notification bar controls — Validated in Phase 3: Audio Playback (human verification pending)
+- ✓ Music player with standard controls (play/pause, next/prev, seek, shuffle, repeat) — Validated in Phase 3: Audio Playback
 - [ ] Hybrid music playback (online streaming + local download)
-- [ ] Background audio playback with notification bar controls
 - [ ] Local playlist management (create, edit, delete playlists)
 - [ ] Song download to local storage for offline playback
-- [ ] Music player with standard controls (play/pause, next/prev, seek, shuffle, repeat)
 - [ ] Search history and recent plays
 
 ### Out of Scope
@@ -84,4 +84,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-27 after Phase 2: Flutter Shell + Search completion*
+*Last updated: 2026-03-27 after Phase 3: Audio Playback completion*
