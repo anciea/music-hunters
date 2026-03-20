@@ -82,8 +82,14 @@ Plans:
   3. User can create a named playlist, add and remove songs, reorder tracks within it, view its contents, and delete it with a confirmation prompt
   4. The app automatically records every played track and the user can view a recent plays list and tap any entry to replay it
   5. A Downloads library screen shows all locally stored tracks browsable without network
-**Plans**: TBD
+**Plans**: 4 plans
 **UI hint**: yes
+
+Plans:
+- [ ] 04-01-PLAN.md — SQLite database, Freezed models (DownloadEntry, PlaylistModel, RecentPlay), notifiers (Downloads, Playlists, RecentPlays), QueueNotifier local playback + recent plays hook
+- [ ] 04-02-PLAN.md — Library tab UI (3-section CustomScrollView), playlist detail screen, create/rename/delete dialogs, playlist picker sheet, go_router route
+- [ ] 04-03-PLAN.md — Download state overlay on TrackListTile, extended search context menu (Add to Playlist + Download), full player secondary controls (playlist add + download buttons)
+- [ ] 04-04-PLAN.md — Human verification: end-to-end downloads, playlists, recent plays
 
 ## Progress
 
@@ -95,4 +101,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Backend API | 3/3 | Complete |  |
 | 2. Flutter Shell + Search | 3/3 | Complete   | 2026-03-27 |
 | 3. Audio Playback | 3/4 | In Progress|  |
-| 4. Library | 0/? | Not started | - |
+| 4. Library | 0/4 | Not started | - |
