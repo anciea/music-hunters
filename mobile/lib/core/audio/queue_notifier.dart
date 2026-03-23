@@ -3,9 +3,12 @@ import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../config/app_config.dart';
+import '../models/download_entry.dart';
 import '../models/track_dto.dart';
 import '../providers/player_provider.dart';
 import 'audio_handler.dart';
+import '../../features/downloads/download_notifier.dart';
+import '../../features/library/recent_plays_notifier.dart';
 
 part 'queue_notifier.g.dart';
 
@@ -32,7 +35,28 @@ class Queue extends _$Queue {
   /// The tag is the source of truth for the now-playing metadata displayed in
   /// the OS notification — [MusicDlAudioHandler] reads it from
   /// [AudioPlayer.sequence[index].tag] whenever the current index changes.
+  ///
+  /// If the track has been downloaded locally, uses [Uri.file] to play from
+  /// disk (no network request, no headers needed). Falls back to the /stream
+  /// endpoint for tracks that are not cached locally.
   AudioSource _toAudioSource(TrackDto track) {
+    final key = '${track.source ?? ''}_${track.trackId}';
+    final entry = ref.read(downloadsProvider.notifier).statusFor(key);
+    if (entry.status == DownloadStatus.downloaded && entry.localPath != null) {
+      return AudioSource.uri(
+        Uri.file(entry.localPath!),
+        tag: MediaItem(
+          id: '${track.source ?? ''}_${track.trackId}',
+          title: track.songName ?? 'Unknown',
+          artist: track.singers,
+          album: track.album,
+          artUri: track.coverUrl != null ? Uri.parse(track.coverUrl!) : null,
+          duration: track.durationS != null
+              ? Duration(seconds: track.durationS!.round())
+              : null,
+        ),
+      );
+    }
     return AudioSource.uri(
       Uri.parse(
         '${AppConfig.apiBaseUrl}/stream'
@@ -69,6 +93,8 @@ class Queue extends _$Queue {
     await handler.skipToQueueItem(0);
     await handler.play();
     ref.read(currentTrackProvider.notifier).setTrack(track);
+    // Record recent play
+    ref.read(recentPlaysProvider.notifier).record(track);
   }
 
   /// Inserts [track] immediately after the currently playing item and keeps
