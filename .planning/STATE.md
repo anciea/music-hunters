@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-audio-playback 03-03-PLAN.md
-last_updated: "2026-03-27T07:18:41.928Z"
+stopped_at: Completed 04-library-01-PLAN.md
+last_updated: "2026-03-27T09:11:30.949Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
+  total_plans: 14
+  completed_plans: 11
   percent: 100
 ---
 
@@ -21,12 +21,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-26)
 
 **Core value:** Users can search and play music from any supported platform through a single, elegant mobile interface
-**Current focus:** Phase 03 — audio-playback
+**Current focus:** Phase 04 — library
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
+Phase: 04 (library) — EXECUTING
+Plan: 2 of 4
 Status: Ready to execute
 Last activity: 2026-03-27
 
@@ -61,6 +61,7 @@ Progress: [██████████] 100%
 | Phase 03-audio-playback P01 | 10 | 3 tasks | 8 files |
 | Phase 03-audio-playback P02 | 4 | 2 tasks | 4 files |
 | Phase 03-audio-playback P03 | 5 | 2 tasks | 4 files |
+| Phase 04-library P01 | 5 | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,9 @@ Recent decisions affecting current work:
 - [Phase 03-audio-playback]: Nested StreamBuilders (not rxdart) for SeekBar: outer on durationStream, inner on positionStream — _dragPosition lives in State object so survives StreamBuilder rebuilds
 - [Phase 03-audio-playback]: QueueBottomSheet extracted as standalone file with static .show() factory — separation of concerns, enables independent use
 - [Phase 03-audio-playback]: onLongPress added as optional nullable param to TrackListTile — backward compatible, no forced migration of existing callers
+- [Phase 04-library]: downloadsProvider.notifier.statusFor() not downloadsProvider.statusFor() — provider state is Map, statusFor is a notifier method
+- [Phase 04-library]: Hydrate-on-build pattern: build() returns empty synchronously, _hydrate()/_load() populates async — avoids FutureProvider complexity for keepAlive notifiers
+- [Phase 04-library]: Track key pattern 'source_trackId' used consistently across DownloadNotifier and QueueNotifier for O(1) Map lookup
 
 ### Pending Todos
 
@@ -109,6 +113,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T06:55:48.761Z
-Stopped at: Completed 03-audio-playback 03-03-PLAN.md
+Last session: 2026-03-27T09:11:30.945Z
+Stopped at: Completed 04-library-01-PLAN.md
 Resume file: None
