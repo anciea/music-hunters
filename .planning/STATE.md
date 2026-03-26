@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-library-01-PLAN.md
-last_updated: "2026-03-27T09:11:30.949Z"
+stopped_at: Completed 04-library-02-PLAN.md
+last_updated: "2026-03-27T09:25:14.451Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 14
-  completed_plans: 11
+  completed_plans: 12
   percent: 100
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 ## Current Position
 
 Phase: 04 (library) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-03-27
 
@@ -62,6 +62,7 @@ Progress: [██████████] 100%
 | Phase 03-audio-playback P02 | 4 | 2 tasks | 4 files |
 | Phase 03-audio-playback P03 | 5 | 2 tasks | 4 files |
 | Phase 04-library P01 | 5 | 2 tasks | 16 files |
+| Phase 04-library P02 | 9 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -100,6 +101,9 @@ Recent decisions affecting current work:
 - [Phase 04-library]: downloadsProvider.notifier.statusFor() not downloadsProvider.statusFor() — provider state is Map, statusFor is a notifier method
 - [Phase 04-library]: Hydrate-on-build pattern: build() returns empty synchronously, _hydrate()/_load() populates async — avoids FutureProvider complexity for keepAlive notifiers
 - [Phase 04-library]: Track key pattern 'source_trackId' used consistently across DownloadNotifier and QueueNotifier for O(1) Map lookup
+- [Phase 04-library]: git add -f required for all new files in mobile/lib/ — root .gitignore has lib/ pattern from Python project
+- [Phase 04-library]: Navigator captured before async gap in async dialog handlers to satisfy use_build_context_synchronously lint
+- [Phase 04-library]: PlaylistDetailScreen uses local _tracks state for optimistic UI on reorder/dismiss before DB completes
 
 ### Pending Todos
 
@@ -113,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T09:11:30.945Z
-Stopped at: Completed 04-library-01-PLAN.md
+Last session: 2026-03-27T09:25:14.447Z
+Stopped at: Completed 04-library-02-PLAN.md
 Resume file: None
