@@ -29,7 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A download request returns the audio file in the requested format (MP3/FLAC/M4A/AAC)
   4. All endpoints require a valid API key and reject unauthenticated requests
   5. Server is accessible over HTTPS from an Android emulator running on a development machine
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — api/ scaffold: FastAPI app, auth, models, utils (TrackDTO, encode/decode, run_sync)
+- [ ] 01-02-PLAN.md — GET /search endpoint with TTLCache, SongInfo->TrackDTO mapping
+- [ ] 01-03-PLAN.md — GET /stream/{track_id} (httpx proxy + Range forwarding) and GET /download/{track_id} (FileResponse + BackgroundTask cleanup); systemd service unit
 
 ### Phase 2: Flutter Shell + Search
 **Goal**: Users can open the app, search for music by keyword, and see results from all sources
@@ -76,7 +81,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend API | 0/? | Not started | - |
+| 1. Backend API | 0/3 | In progress | - |
 | 2. Flutter Shell + Search | 0/? | Not started | - |
 | 3. Audio Playback | 0/? | Not started | - |
 | 4. Library | 0/? | Not started | - |
