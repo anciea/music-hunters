@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/audio/queue_notifier.dart';
 import '../../core/models/track_dto.dart';
+import '../../features/downloads/download_notifier.dart';
+import '../../features/library/dialogs/playlist_picker_sheet.dart';
 import 'search_notifier.dart';
 import 'widgets/empty_state.dart';
 import 'widgets/error_state.dart';
@@ -50,7 +52,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   /// Shows the long-press context menu for [track] with Play Now / Play Next /
-  /// Add to Queue options.
+  /// Add to Queue / Add to Playlist / Download options.
   void _showTrackContextMenu(BuildContext context, TrackDto track) {
     showModalBottomSheet<void>(
       context: context,
@@ -111,6 +113,49 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               onTap: () {
                 Navigator.pop(context);
                 ref.read(queueProvider.notifier).addToQueue(track);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.playlist_add, color: Color(0xFF9E9E9E)),
+              title: const Text(
+                'Add to Playlist',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                PlaylistPickerSheet.show(context, ref, track);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.download, color: Color(0xFF1DB954)),
+              title: const Text(
+                'Download',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                ref.read(downloadsProvider.notifier).download(track);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                      'Downloading...',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    backgroundColor: Color(0xFF1E1E1E),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
             ),
           ],
