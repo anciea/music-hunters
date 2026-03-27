@@ -139,7 +139,7 @@ Playlist Grid empty state (no playlists yet): displayed in place of the SliverGr
 ### Playlist Detail Screen
 
 - Route: `/library/playlist/:id` (pushed onto navigation stack, not a tab)
-- AppBar: playlist name as title (Heading style capped at 16sp/600), back button, trailing `Icons.delete` action button (48dp touch target, `#9E9E9E`)
+- AppBar: playlist name as title (Heading style capped at 16sp/600), back button, trailing `Icons.delete` action button (48dp touch target, `#9E9E9E`) wrapped in `Tooltip('Delete playlist')`
 - Body: `ReorderableListView` of `TrackListTile` items
   - Each tile: same `TrackListTile` widget from search (48dp album art, title/artist/duration/source badge), with `onLongPress` disabled (reorder handle replaces long-press in this context)
   - Trailing: `ReorderableDragStartListener` wrapping `Icons.drag_handle` (48dp touch target, `#424242`)
@@ -156,7 +156,7 @@ Playlist Grid empty state (no playlists yet): displayed in place of the SliverGr
   - Title: track name — Heading style (16sp/600), single line ellipsis
   - Subtitle line 1: artist — Body style (14sp/400, `#9E9E9E`)
   - Subtitle line 2: file size + "Offline" badge in Row — Label style (12sp/400, `#9E9E9E`) for file size; "Offline" chip in same row
-  - Trailing: `Icons.more_vert` icon button (48dp) — opens bottom sheet with "Play" and "Delete" options
+  - Trailing: `Icons.more_vert` icon button (48dp) — opens bottom sheet with "Play Now" and "Delete" options
   - Tap: plays from local file via `QueueNotifier.playNow` with local URI
 - Downloads empty state: centered `Icons.download` at 64dp (`#424242`) + "No downloads yet" (Display 20sp/600) + "Tap the download icon on any track to save it offline." (Body 14sp/400, `#9E9E9E`)
 
@@ -181,16 +181,17 @@ Tapping the download icon (not-downloaded state) triggers download. The download
 - Title: "New Playlist" (Heading 16sp/600, white)
 - Content: `TextField` with hint "Playlist name" and `autofocus: true`. Background `#121212`, border radius 4dp. Max 50 characters
 - Actions:
-  - "Cancel" — `TextButton`, white text, Heading 16sp/600
-  - "Create" — `TextButton`, accent text (`#1DB954`), Heading 16sp/600, disabled when field is empty
-- Validation: "Create" button disabled when `TextField` is empty or whitespace-only
+  - "Never mind" — `TextButton`, white text, Heading 16sp/600
+  - "Create Playlist" — `TextButton`, accent text (`#1DB954`), Heading 16sp/600, disabled when field is empty
+- Validation: "Create Playlist" button disabled when `TextField` is empty or whitespace-only
 
 ### Rename Playlist Dialog
 
 Same widget as New Playlist Name Dialog with:
 - Title: "Rename Playlist"
 - `TextField` pre-filled with current playlist name
-- Action button label: "Save" instead of "Create"
+- Dismiss action label: "Never mind"
+- Confirm action label: "Rename" instead of "Create Playlist"
 
 ### Delete Playlist Confirmation Dialog
 
@@ -199,7 +200,7 @@ Same widget as New Playlist Name Dialog with:
 - Title: "Delete playlist?" (Heading 16sp/600, white)
 - Content: ""{playlist_name}" will be permanently deleted." (Body 14sp/400, `#9E9E9E`)
 - Actions:
-  - "Cancel" — `TextButton`, white text, Heading 16sp/600
+  - "Keep playlist" — `TextButton`, white text, Heading 16sp/600
   - "Delete" — `TextButton`, destructive text (`#E53935`), Heading 16sp/600
 
 ### Add to Playlist Bottom Sheet (Playlist Picker)
@@ -265,7 +266,7 @@ Note: The existing "Downloads" bottom nav tab (`/downloads`) stays as a placehol
 | Playlist card | idle, pressed (ink ripple), long-pressed (context menu shown) |
 | Playlist detail tile | idle, pressed, dragging (elevated shadow), dismissing (red swipe-to-delete reveal) |
 | Recent play item | idle, pressed (ink ripple) |
-| New Playlist dialog "Create" button | disabled (empty field), enabled (text entered), loading (short async op) |
+| New Playlist dialog "Create Playlist" button | disabled (empty field), enabled (text entered), loading (short async op) |
 | Delete Playlist dialog "Delete" button | idle, pressed |
 | Playlist picker item | idle, pressed |
 | Download tile "more" button | idle, pressed (bottom sheet shown) |
@@ -283,12 +284,14 @@ Note: The existing "Downloads" bottom nav tab (`/downloads`) stays as a placehol
 | FAB semantic label | "Create playlist" | default |
 | New Playlist dialog title | "New Playlist" | default |
 | New Playlist dialog field hint | "Playlist name" | default |
-| New Playlist dialog create button | "Create" | default |
+| New Playlist dialog dismiss button | "Never mind" | checker revision: generic "Cancel" blocked |
+| New Playlist dialog create button | "Create Playlist" | checker revision: verb + noun required |
 | Rename dialog title | "Rename Playlist" | default |
-| Rename dialog save button | "Save" | default |
+| Rename dialog dismiss button | "Never mind" | checker revision: generic "Cancel" blocked |
+| Rename dialog confirm button | "Rename" | checker revision: generic "Save" blocked |
 | Delete dialog title | "Delete playlist?" | default |
 | Delete dialog body | ""{playlist_name}" will be permanently deleted." | CONTEXT.md: AlertDialog with playlist name |
-| Delete dialog cancel button | "Cancel" | default |
+| Delete dialog cancel button | "Keep playlist" | checker revision: generic "Cancel" blocked |
 | Delete dialog confirm button | "Delete" | CONTEXT.md: destructive action |
 | Playlist card track count | "N tracks" (e.g. "12 tracks") | default |
 | Playlist detail AppBar subtitle | "N tracks" | default |
@@ -307,13 +310,14 @@ Note: The existing "Downloads" bottom nav tab (`/downloads`) stays as a placehol
 | Playlists empty state body | "Tap + to create your first playlist." | default |
 | Downloads empty state heading | "No downloads yet" | default |
 | Downloads empty state body | "Tap the download icon on any track to save it offline." | default |
-| Download tile "more" button option 1 | "Play" | default |
+| Download tile "more" button option 1 | "Play Now" | checker revision: matches Phase 3 pattern |
 | Download tile "more" button option 2 | "Delete" | default |
 | Download progress semantic label | "Downloading, {N}%" | accessibility |
 | Downloaded checkmark semantic label | "Downloaded" | accessibility |
 | Not-downloaded icon semantic label | "Download" | accessibility |
 | Add to playlist button semantic label | "Add to playlist" | accessibility |
 | Playlist cover art semantic label | "{playlist_name} cover" | accessibility |
+| Playlist detail delete button tooltip | "Delete playlist" | checker revision: icon-only button requires tooltip |
 
 ---
 
@@ -329,6 +333,7 @@ Note: The existing "Downloads" bottom nav tab (`/downloads`) stays as a placehol
 - `CircularProgressIndicator` (downloading): `Semantics(label: "Downloading, ${N}%")` wrapper
 - Add to Playlist bottom sheet: `Semantics(container: true, label: "Add to playlist")` wrapper
 - FAB: `Tooltip('Create playlist')` in addition to semantic label
+- Playlist detail delete button: `Tooltip('Delete playlist')` wrapping the `Icons.delete` `IconButton`
 
 ---
 
