@@ -44,23 +44,23 @@
 
 ### Playlist Management
 
-- [ ] **PLIST-01**: User can create a named playlist
-- [ ] **PLIST-02**: User can add a song to a playlist from search results or player
-- [ ] **PLIST-03**: User can remove a song from a playlist
-- [ ] **PLIST-04**: User can view playlist contents with track list
-- [ ] **PLIST-05**: User can delete a playlist (with confirmation)
-- [ ] **PLIST-06**: User can reorder tracks within a playlist
+- [x] **PLIST-01**: User can create a named playlist
+- [x] **PLIST-02**: User can add a song to a playlist from search results or player
+- [x] **PLIST-03**: User can remove a song from a playlist
+- [x] **PLIST-04**: User can view playlist contents with track list
+- [x] **PLIST-05**: User can delete a playlist (with confirmation)
+- [x] **PLIST-06**: User can reorder tracks within a playlist
 
 ### Recent Plays
 
 - [x] **REC-01**: App records recently played tracks automatically
-- [ ] **REC-02**: User can view recent plays list and tap to replay
+- [x] **REC-02**: User can view recent plays list and tap to replay
 
 ### Downloads / Offline
 
 - [x] **DL-01**: User can download a track to local storage from search results or player
 - [x] **DL-02**: Downloaded tracks show download status indicator (downloaded / downloading / not downloaded)
-- [ ] **DL-03**: User can browse a downloads library screen showing all locally stored tracks
+- [x] **DL-03**: User can browse a downloads library screen showing all locally stored tracks
 - [x] **DL-04**: Downloaded tracks play from local file without network
 
 ## v2 Requirements
@@ -129,16 +129,16 @@
 | QUE-04 | Phase 3 | Complete |
 | DL-01 | Phase 4 | Complete |
 | DL-02 | Phase 4 | Complete |
-| DL-03 | Phase 4 | Pending |
+| DL-03 | Phase 4 | Complete |
 | DL-04 | Phase 4 | Complete |
-| PLIST-01 | Phase 4 | Pending |
-| PLIST-02 | Phase 4 | Pending |
-| PLIST-03 | Phase 4 | Pending |
-| PLIST-04 | Phase 4 | Pending |
-| PLIST-05 | Phase 4 | Pending |
-| PLIST-06 | Phase 4 | Pending |
+| PLIST-01 | Phase 4 | Complete |
+| PLIST-02 | Phase 4 | Complete |
+| PLIST-03 | Phase 4 | Complete |
+| PLIST-04 | Phase 4 | Complete |
+| PLIST-05 | Phase 4 | Complete |
+| PLIST-06 | Phase 4 | Complete |
 | REC-01 | Phase 4 | Complete |
-| REC-02 | Phase 4 | Pending |
+| REC-02 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 34 total
