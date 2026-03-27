@@ -89,7 +89,7 @@ Plans:
 - [x] 04-01-PLAN.md — SQLite database, Freezed models (DownloadEntry, PlaylistModel, RecentPlay), notifiers (Downloads, Playlists, RecentPlays), QueueNotifier local playback + recent plays hook
 - [x] 04-02-PLAN.md — Library tab UI (3-section CustomScrollView), playlist detail screen, create/rename/delete dialogs, playlist picker sheet, go_router route
 - [x] 04-03-PLAN.md — Download state overlay on TrackListTile, extended search context menu (Add to Playlist + Download), full player secondary controls (playlist add + download buttons)
-- [ ] 04-04-PLAN.md — Human verification: end-to-end downloads, playlists, recent plays
+- [x] 04-04-PLAN.md — Human verification: end-to-end downloads, playlists, recent plays
 
 ## Progress
 
