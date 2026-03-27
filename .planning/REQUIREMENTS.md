@@ -38,9 +38,9 @@
 
 ### Search
 
-- [ ] **SRCH-01**: User can search by keyword and see results from all sources
-- [ ] **SRCH-02**: Each result shows title, artist, album art, duration, and source platform
-- [ ] **SRCH-03**: User can tap a search result to start playback immediately
+- [x] **SRCH-01**: User can search by keyword and see results from all sources
+- [x] **SRCH-02**: Each result shows title, artist, album art, duration, and source platform
+- [x] **SRCH-03**: User can tap a search result to start playback immediately
 
 ### Playlist Management
 
@@ -108,9 +108,9 @@
 | API-01 | Phase 1 | Complete |
 | API-02 | Phase 1 | Complete |
 | API-03 | Phase 1 | Complete |
-| SRCH-01 | Phase 2 | Pending |
-| SRCH-02 | Phase 2 | Pending |
-| SRCH-03 | Phase 2 | Pending |
+| SRCH-01 | Phase 2 | Complete |
+| SRCH-02 | Phase 2 | Complete |
+| SRCH-03 | Phase 2 | Complete |
 | PLAY-01 | Phase 3 | Pending |
 | PLAY-02 | Phase 3 | Pending |
 | PLAY-03 | Phase 3 | Pending |

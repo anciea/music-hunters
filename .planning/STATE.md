@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 UI-SPEC approved
-last_updated: "2026-03-27T03:23:40.426Z"
-last_activity: 2026-03-27 -- Phase 02 execution started
+stopped_at: Completed Phase 02-01-PLAN.md
+last_updated: "2026-03-27T04:09:12.367Z"
+last_activity: 2026-03-27
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 4
   percent: 0
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 ## Current Position
 
 Phase: 02 (flutter-shell-search) — EXECUTING
-Plan: 1 of 3
-Status: Executing Phase 02
-Last activity: 2026-03-27 -- Phase 02 execution started
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -55,6 +55,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-backend-api P01 | 7min | 3 tasks | 11 files |
 | Phase 01-backend-api P02 | 10min | 1 tasks | 1 files |
 | Phase 01-backend-api P03 | 3min | 2 tasks | 3 files |
+| Phase 02-flutter-shell-search P01 | 18 | 3 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 01-backend-api]: Per-record try/except in SongInfo->TrackDTO mapping loop prevents one malformed SongInfo from dropping all tracks from that source
 - [Phase 01-backend-api]: Proxy-first streaming in /stream: httpx CDN proxy with Range forwarding, file fallback for opaque-stream sources — handles all 15 enabled sources without per-source branching
 - [Phase 01-backend-api]: _get_fresh_song_info and _download_to_temp centralized in stream.py, imported by download.py — single source of truth for fresh CDN URL logic
+- [Phase 02-flutter-shell-search]: Riverpod 4.x (riverpod_generator 4.0.3) uses plain Ref in functional providers — DioRef/MusicApiRef types no longer generated
+- [Phase 02-flutter-shell-search]: Freezed 3.x requires abstract class keyword — without it, generated mixin causes missing concrete implementation errors
+- [Phase 02-flutter-shell-search]: StatefulShellRoute.indexedStack is the correct go_router 17.x pattern for persistent 4-tab bottom nav
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T03:23:40Z
-Stopped at: Phase 02-01 blocked — Flutter SDK not installed
-Resume file: .planning/phases/02-flutter-shell-search/02-01-PLAN.md
+Last session: 2026-03-27T04:09:12.360Z
+Stopped at: Completed Phase 02-01-PLAN.md
+Resume file: None
