@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../../core/models/download_entry.dart';
+import '../../core/models/track_dto.dart';
 import '../../core/providers/player_provider.dart';
+import '../../features/downloads/download_notifier.dart';
+import '../../features/library/dialogs/playlist_picker_sheet.dart';
 import '../../features/search/widgets/source_badge.dart';
 import 'queue_bottom_sheet.dart';
 import 'seek_bar.dart';
@@ -351,12 +355,41 @@ class FullPlayerSheet extends ConsumerWidget {
                 ),
               ),
 
-              // 7. Secondary controls row — queue button on right
+              // 7. Secondary controls row — playlist + download on left, queue on right
               Padding(
                 padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Left side: Add to Playlist + Download
+                    Row(
+                      children: [
+                        // Add to Playlist button
+                        Semantics(
+                          label: 'Add to playlist',
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.playlist_add,
+                              color: Color(0xFF9E9E9E),
+                            ),
+                            iconSize: 28,
+                            constraints: const BoxConstraints(
+                              minWidth: 48,
+                              minHeight: 48,
+                            ),
+                            onPressed: track != null
+                                ? () => PlaylistPickerSheet.show(
+                                    context, ref, track)
+                                : null,
+                            tooltip: 'Add to playlist',
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        // Download button — 3 states
+                        _DownloadButton(track: track),
+                      ],
+                    ),
+                    // Right side: Queue button (existing)
                     Semantics(
                       label: 'View queue',
                       child: IconButton(
@@ -410,6 +443,93 @@ class _AlbumArtFallback extends StatelessWidget {
         size: 80,
       ),
     );
+  }
+}
+
+/// Download button for the full player secondary controls.
+///
+/// Shows three states:
+///   - Not downloaded: tappable green download icon, triggers download + SnackBar
+///   - Downloading: indeterminate/determinate circular progress indicator
+///   - Downloaded: green check circle icon (not tappable)
+class _DownloadButton extends ConsumerWidget {
+  const _DownloadButton({required this.track});
+
+  final TrackDto? track;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (track == null) {
+      return IconButton(
+        icon: const Icon(Icons.download, color: Color(0xFF424242)),
+        iconSize: 28,
+        constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+        onPressed: null,
+      );
+    }
+    final trackKey = '${track!.source ?? ''}_${track!.trackId}';
+    final entry = ref.watch(
+      downloadsProvider.select((map) => map[trackKey]),
+    );
+    final status = entry?.status ?? DownloadStatus.notDownloaded;
+    final progress = entry?.progress ?? 0.0;
+
+    switch (status) {
+      case DownloadStatus.notDownloaded:
+        return Semantics(
+          label: 'Download',
+          child: IconButton(
+            icon: const Icon(Icons.download, color: Color(0xFF1DB954)),
+            iconSize: 28,
+            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+            onPressed: () {
+              ref.read(downloadsProvider.notifier).download(track!);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Downloading...',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  backgroundColor: Color(0xFF1E1E1E),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            },
+          ),
+        );
+      case DownloadStatus.downloading:
+        return Semantics(
+          label: 'Downloading, ${(progress * 100).toInt()}%',
+          child: SizedBox(
+            width: 48,
+            height: 48,
+            child: Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  value: progress > 0 ? progress : null,
+                  strokeWidth: 2,
+                  color: const Color(0xFF1DB954),
+                ),
+              ),
+            ),
+          ),
+        );
+      case DownloadStatus.downloaded:
+        return Semantics(
+          label: 'Downloaded',
+          child: const IconButton(
+            icon: Icon(Icons.check_circle, color: Color(0xFF1DB954)),
+            iconSize: 28,
+            constraints: BoxConstraints(minWidth: 48, minHeight: 48),
+            onPressed: null,
+          ),
+        );
+    }
   }
 }
 
