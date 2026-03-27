@@ -95,8 +95,8 @@ final audioPlayerProvider = AudioPlayerProvider._();
 /// share the exact same [AudioPlayer] instance managed by the handler.
 
 final class AudioPlayerProvider
-    extends $FunctionalProvider<dynamic, dynamic, dynamic>
-    with $Provider<dynamic> {
+    extends $FunctionalProvider<AudioPlayer, AudioPlayer, AudioPlayer>
+    with $Provider<AudioPlayer> {
   /// Returns the [just_audio] [AudioPlayer] from the handler singleton.
   ///
   /// All code that needs the player should read this provider so they all
@@ -117,24 +117,24 @@ final class AudioPlayerProvider
 
   @$internal
   @override
-  $ProviderElement<dynamic> $createElement($ProviderPointer pointer) =>
+  $ProviderElement<AudioPlayer> $createElement($ProviderPointer pointer) =>
       $ProviderElement(pointer);
 
   @override
-  dynamic create(Ref ref) {
+  AudioPlayer create(Ref ref) {
     return audioPlayer(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(dynamic value) {
+  Override overrideWithValue(AudioPlayer value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<dynamic>(value),
+      providerOverride: $SyncValueProvider<AudioPlayer>(value),
     );
   }
 }
 
-String _$audioPlayerHash() => r'750101b9d0eae1721a53c2780079add10c8c2f58';
+String _$audioPlayerHash() => r'3ecf9588bcbf5fe0f2293a3dfe8fabb232b70e8d';
 
 /// Tracks the currently playing/loading [TrackDto].
 ///

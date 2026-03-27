@@ -1,3 +1,4 @@
+import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../audio/audio_handler.dart';
@@ -25,7 +26,7 @@ MusicDlAudioHandler audioHandler(Ref ref) {
 /// All code that needs the player should read this provider so they all
 /// share the exact same [AudioPlayer] instance managed by the handler.
 @Riverpod(keepAlive: true)
-dynamic audioPlayer(Ref ref) {
+AudioPlayer audioPlayer(Ref ref) {
   return ref.read(audioHandlerProvider).player;
 }
 
