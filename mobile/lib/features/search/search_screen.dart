@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:just_audio/just_audio.dart';
 
-import '../../core/config/app_config.dart';
+import '../../core/audio/queue_notifier.dart';
 import '../../core/models/track_dto.dart';
-import '../../core/providers/player_provider.dart';
 import 'search_notifier.dart';
 import 'widgets/empty_state.dart';
 import 'widgets/error_state.dart';
@@ -19,6 +17,9 @@ import 'widgets/track_list_tile.dart';
 ///   data (empty)     -> EmptyState(hasSearched: true)
 ///   data (results)   -> ListView of TrackListTile
 ///   error            -> ErrorState with retry button
+///
+/// Tapping a track calls [_playTrack] which goes through
+/// [queueProvider.notifier.playNow] — never direct player calls.
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
@@ -40,26 +41,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     ref.read(searchProvider.notifier).search(text);
   }
 
-  Future<void> _playTrack(TrackDto track) async {
-    final player = ref.read(audioPlayerProvider);
-    try {
-      await player.stop();
-      ref.read(currentTrackProvider.notifier).setTrack(track);
-      final streamUrl = '${AppConfig.apiBaseUrl}/stream/${track.trackId}';
-      await player.setAudioSource(
-        AudioSource.uri(
-          Uri.parse(streamUrl),
-          headers: {'X-API-Key': AppConfig.apiKey},
-        ),
-      );
-      await player.play();
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Couldn't play this track")),
-        );
-      }
-    }
+  /// Plays [track] immediately by delegating to [QueueNotifier.playNow].
+  ///
+  /// QueueNotifier handles stop → clear → add source → seek(0) → play in one
+  /// atomic operation, so search_screen has no direct AudioPlayer dependency.
+  void _playTrack(TrackDto track) {
+    ref.read(queueProvider.notifier).playNow(track);
   }
 
   @override
