@@ -67,7 +67,7 @@ Plans:
 **UI hint**: yes
 
 Plans:
-- [ ] 03-01-PLAN.md — AudioHandler wrapping just_audio, QueueNotifier with ConcatenatingAudioSource, audio_service+audio_session init in main.dart, AndroidManifest declarations
+- [x] 03-01-PLAN.md — AudioHandler wrapping just_audio, QueueNotifier with ConcatenatingAudioSource, audio_service+audio_session init in main.dart, AndroidManifest declarations
 - [ ] 03-02-PLAN.md — Full player DraggableScrollableSheet (album art, seek bar, controls), enhanced mini player (tap-to-expand, progress line, loading states), search screen refactor to QueueNotifier
 - [ ] 03-03-PLAN.md — Queue bottom sheet (ReorderableListView, remove, reorder), long-press context menu on search tiles (Play Now, Play Next, Add to Queue)
 - [ ] 03-04-PLAN.md — Human verification: end-to-end playback, background audio, notification controls, queue management
@@ -94,5 +94,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Backend API | 3/3 | Complete |  |
 | 2. Flutter Shell + Search | 3/3 | Complete   | 2026-03-27 |
-| 3. Audio Playback | 0/4 | Not started | - |
+| 3. Audio Playback | 1/4 | In Progress|  |
 | 4. Library | 0/? | Not started | - |

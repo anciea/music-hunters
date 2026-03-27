@@ -13,15 +13,15 @@
 
 ### Playback
 
-- [ ] **PLAY-01**: User can play/pause a track from any screen
+- [x] **PLAY-01**: User can play/pause a track from any screen
 - [ ] **PLAY-02**: User can see and scrub a seek bar with current position and total duration
 - [ ] **PLAY-03**: User can skip to next/previous track in the queue
 - [ ] **PLAY-04**: User can toggle shuffle mode on/off
 - [ ] **PLAY-05**: User can cycle repeat mode (off / one / all)
-- [ ] **PLAY-06**: Audio continues playing when app is backgrounded
-- [ ] **PLAY-07**: Android notification bar shows playback controls (play/pause, next, previous)
-- [ ] **PLAY-08**: Headset button controls are supported (play/pause, skip)
-- [ ] **PLAY-09**: Audio focus is managed correctly (pause on phone call, duck for notifications)
+- [x] **PLAY-06**: Audio continues playing when app is backgrounded
+- [x] **PLAY-07**: Android notification bar shows playback controls (play/pause, next, previous)
+- [x] **PLAY-08**: Headset button controls are supported (play/pause, skip)
+- [x] **PLAY-09**: Audio focus is managed correctly (pause on phone call, duck for notifications)
 
 ### Mini Player
 
@@ -111,15 +111,15 @@
 | SRCH-01 | Phase 2 | Complete |
 | SRCH-02 | Phase 2 | Complete |
 | SRCH-03 | Phase 2 | Complete |
-| PLAY-01 | Phase 3 | Pending |
+| PLAY-01 | Phase 3 | Complete |
 | PLAY-02 | Phase 3 | Pending |
 | PLAY-03 | Phase 3 | Pending |
 | PLAY-04 | Phase 3 | Pending |
 | PLAY-05 | Phase 3 | Pending |
-| PLAY-06 | Phase 3 | Pending |
-| PLAY-07 | Phase 3 | Pending |
-| PLAY-08 | Phase 3 | Pending |
-| PLAY-09 | Phase 3 | Pending |
+| PLAY-06 | Phase 3 | Complete |
+| PLAY-07 | Phase 3 | Complete |
+| PLAY-08 | Phase 3 | Complete |
+| PLAY-09 | Phase 3 | Complete |
 | MINI-01 | Phase 3 | Pending |
 | MINI-02 | Phase 3 | Pending |
 | MINI-03 | Phase 3 | Pending |
