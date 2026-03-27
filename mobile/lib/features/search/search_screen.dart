@@ -49,6 +49,76 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     ref.read(queueProvider.notifier).playNow(track);
   }
 
+  /// Shows the long-press context menu for [track] with Play Now / Play Next /
+  /// Add to Queue options.
+  void _showTrackContextMenu(BuildContext context, TrackDto track) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: const Color(0xFF1E1E1E),
+      builder: (_) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(
+                Icons.play_arrow,
+                color: Color(0xFF9E9E9E),
+              ),
+              title: const Text(
+                'Play Now',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                ref.read(queueProvider.notifier).playNow(track);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.playlist_play,
+                color: Color(0xFF9E9E9E),
+              ),
+              title: const Text(
+                'Play Next',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                ref.read(queueProvider.notifier).playNext(track);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.add_to_queue,
+                color: Color(0xFF9E9E9E),
+              ),
+              title: const Text(
+                'Add to Queue',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                ref.read(queueProvider.notifier).addToQueue(track);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final searchState = ref.watch(searchProvider);
@@ -116,6 +186,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                     return TrackListTile(
                       track: track,
                       onTap: () => _playTrack(track),
+                      onLongPress: () =>
+                          _showTrackContextMenu(context, track),
                     );
                   },
                 );

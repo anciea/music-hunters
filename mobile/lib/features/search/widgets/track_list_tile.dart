@@ -8,15 +8,18 @@ import 'source_badge.dart';
 ///
 /// Shows: 48x48 album art thumbnail, track title, artist, duration, source badge.
 /// Tap triggers [onTap] callback — wired to playback in Plan 02-03.
+/// Long-press triggers [onLongPress] callback — opens context menu in Plan 03-03.
 class TrackListTile extends StatelessWidget {
   const TrackListTile({
     super.key,
     required this.track,
     required this.onTap,
+    this.onLongPress,
   });
 
   final TrackDto track;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +85,7 @@ class TrackListTile extends StatelessWidget {
           ],
         ),
         onTap: onTap,
+        onLongPress: onLongPress,
       ),
     );
   }
