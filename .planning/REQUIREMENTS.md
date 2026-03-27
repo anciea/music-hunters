@@ -53,15 +53,15 @@
 
 ### Recent Plays
 
-- [ ] **REC-01**: App records recently played tracks automatically
+- [x] **REC-01**: App records recently played tracks automatically
 - [ ] **REC-02**: User can view recent plays list and tap to replay
 
 ### Downloads / Offline
 
-- [ ] **DL-01**: User can download a track to local storage from search results or player
-- [ ] **DL-02**: Downloaded tracks show download status indicator (downloaded / downloading / not downloaded)
+- [x] **DL-01**: User can download a track to local storage from search results or player
+- [x] **DL-02**: Downloaded tracks show download status indicator (downloaded / downloading / not downloaded)
 - [ ] **DL-03**: User can browse a downloads library screen showing all locally stored tracks
-- [ ] **DL-04**: Downloaded tracks play from local file without network
+- [x] **DL-04**: Downloaded tracks play from local file without network
 
 ## v2 Requirements
 
@@ -127,17 +127,17 @@
 | QUE-02 | Phase 3 | Complete |
 | QUE-03 | Phase 3 | Complete |
 | QUE-04 | Phase 3 | Complete |
-| DL-01 | Phase 4 | Pending |
-| DL-02 | Phase 4 | Pending |
+| DL-01 | Phase 4 | Complete |
+| DL-02 | Phase 4 | Complete |
 | DL-03 | Phase 4 | Pending |
-| DL-04 | Phase 4 | Pending |
+| DL-04 | Phase 4 | Complete |
 | PLIST-01 | Phase 4 | Pending |
 | PLIST-02 | Phase 4 | Pending |
 | PLIST-03 | Phase 4 | Pending |
 | PLIST-04 | Phase 4 | Pending |
 | PLIST-05 | Phase 4 | Pending |
 | PLIST-06 | Phase 4 | Pending |
-| REC-01 | Phase 4 | Pending |
+| REC-01 | Phase 4 | Complete |
 | REC-02 | Phase 4 | Pending |
 
 **Coverage:**
