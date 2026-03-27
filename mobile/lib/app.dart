@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'features/downloads/downloads_screen.dart';
 import 'features/library/library_screen.dart';
+import 'features/library/playlist_detail_screen.dart';
 import 'features/search/search_screen.dart';
 import 'features/settings/settings_screen.dart';
 import 'shared/app_scaffold.dart';
@@ -69,6 +70,16 @@ final GoRouter _router = GoRouter(
             GoRoute(
               path: '/library',
               builder: (context, state) => const LibraryScreen(),
+              routes: [
+                GoRoute(
+                  path: 'playlist/:id',
+                  builder: (context, state) {
+                    final id =
+                        int.parse(state.pathParameters['id']!);
+                    return PlaylistDetailScreen(playlistId: id);
+                  },
+                ),
+              ],
             ),
           ],
         ),
