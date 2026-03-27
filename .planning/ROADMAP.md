@@ -51,7 +51,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Flutter project scaffold: pubspec, Freezed models, Dio+Retrofit API client, go_router 4-tab shell, dark theme
 - [x] 02-02-PLAN.md — Search screen: AsyncNotifier, result list tiles, source badges, shimmer loading, empty/error states
-- [ ] 02-03-PLAN.md — Tap-to-play via just_audio /stream endpoint, mini player bar with play/pause control
+- [x] 02-03-PLAN.md — Tap-to-play via just_audio /stream endpoint, mini player bar with play/pause control
 
 ### Phase 3: Audio Playback
 **Goal**: Users can play music with full controls, background audio, notification bar integration, and queue management
