@@ -74,13 +74,14 @@ Dark theme only (locked from CONTEXT.md). All values in ARGB hex as used in Flut
 |------|-------|-------|
 | Dominant (60%) | `#121212` | Scaffold background, screen backgrounds, AppBar background |
 | Secondary (30%) | `#1E1E1E` | Result cards, bottom nav bar surface, mini player bar background, shimmer base |
-| Accent (10%) | `#1DB954` (Spotify green — music app convention) | Active bottom nav tab indicator, shimmer highlight pulse, playback-active state on mini player play/pause icon |
+| Accent (10%) | `#1DB954` (Spotify green — music app convention) | Active bottom nav tab indicator, shimmer highlight pulse, playback-active state on mini player play/pause icon, error state retry button |
 | Destructive | `#E53935` | Not used in Phase 2 — reserved for future phases |
 
 Accent reserved for:
 1. Active bottom navigation tab indicator icon + label
 2. Shimmer skeleton highlight pulse (animated overlay only)
 3. Play/pause icon on mini player bar when track is actively playing
+4. Error state retry button ("Retry Search" `ElevatedButton`)
 
 Source platform badge chips use per-source brand colors (not the accent). Each badge is a `Chip` widget with a distinct `backgroundColor` scoped to that source. The accent color is NOT used for badges.
 
@@ -96,8 +97,9 @@ Shimmer base: `#1E1E1E`. Shimmer highlight: `#2A2A2A`. These are neutral grays, 
 - Behavior: Triggers search on `onSubmitted` (Enter key / submit button tap) — NOT on text change
 - Hint text: "Search songs, artists, albums..."
 - Leading icon: `Icons.search` in secondary color
-- Trailing: `Icons.clear` visible when text is non-empty, taps clear the field
+- Trailing: `Icons.clear` visible when text is non-empty, taps clear the field; semantic label: "Clear search"
 - Background: secondary (`#1E1E1E`)
+- Focal point: The search bar is the primary focal point of the Search screen. It is the first focusable element, receives autofocus on screen entry, and sits at the top of the visual hierarchy above the result list.
 
 ### Result Card (TrackListTile)
 - Widget: `ListTile` inside a `Card` (elevation 0, filled background)
@@ -146,14 +148,14 @@ Shimmer base: `#1E1E1E`. Shimmer highlight: `#2A2A2A`. These are neutral grays, 
 - No CTA button in this state
 
 ### Empty State (No Results)
-- Heading: "No results found" — Display style (20sp/600)
+- Heading: "No music found for that search" — Display style (20sp/600)
 - Body: "Try a different search term or check your connection." — Body style (14sp/400)
 - No CTA button in this state
 
 ### Error State
-- Heading: "Something went wrong" — Display style (20sp/600)
-- Body: "Couldn't reach the music server. Check your connection and try again." — Body style (14sp/400)
-- CTA button: "Retry" — filled `ElevatedButton`, accent color (`#1DB954`), Heading style (16sp/600)
+- Heading: "Couldn't reach the music server" — Display style (20sp/600)
+- Body: "Check your connection and try again." — Body style (14sp/400)
+- CTA button: "Retry Search" — filled `ElevatedButton`, accent color (`#1DB954`), Heading style (16sp/600)
 
 ### Bottom Navigation Bar
 - Widget: `NavigationBar` (Material 3)
@@ -175,7 +177,7 @@ Shimmer base: `#1E1E1E`. Shimmer highlight: `#2A2A2A`. These are neutral grays, 
 - Leading: album art 40x40dp (same CachedNetworkImage logic)
 - Title: track `song_name` — Heading style (16sp/600), single line overflow ellipsis
 - Subtitle: `singers` — Body style (14sp/400), single line overflow ellipsis
-- Trailing: `Icons.pause` / `Icons.play_arrow` icon button — accent color when playing
+- Trailing: `Icons.pause` / `Icons.play_arrow` icon button — accent color when playing; semantic label: "Pause" when playing, "Play" when paused
 - No seek bar in Phase 2 (deferred to Phase 3 full player)
 
 ---
@@ -213,11 +215,11 @@ Navigation: `NavigationBar` with `go_router` indexed routing.
 | Search placeholder | "Search songs, artists, albums..." | default |
 | Empty state (first launch) heading | "Search for music" | CONTEXT.md: friendly empty state |
 | Empty state (first launch) body | "Type a song, artist, or album above to find music from 21+ sources." | CONTEXT.md |
-| Empty state (no results) heading | "No results found" | default |
+| Empty state (no results) heading | "No music found for that search" | revised: checker D1 |
 | Empty state (no results) body | "Try a different search term or check your connection." | default |
-| Error state heading | "Something went wrong" | CONTEXT.md: error state with retry |
-| Error state body | "Couldn't reach the music server. Check your connection and try again." | CONTEXT.md |
-| Error state CTA | "Retry" | CONTEXT.md: retry button |
+| Error state heading | "Couldn't reach the music server" | revised: checker D1 |
+| Error state body | "Check your connection and try again." | revised: checker D1 |
+| Error state CTA | "Retry Search" | revised: checker D1 |
 | Loading state label | (none — shimmer cards replace text during loading) | CONTEXT.md: shimmer skeleton |
 | Mini player (no track) | (bar hidden — not visible) | CONTEXT.md |
 | Bottom nav label 1 | "Search" | CONTEXT.md: 4 tabs |
