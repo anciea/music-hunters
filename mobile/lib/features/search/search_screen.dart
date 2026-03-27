@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 
+import '../../core/config/app_config.dart';
+import '../../core/models/track_dto.dart';
+import '../../core/providers/player_provider.dart';
 import 'search_notifier.dart';
 import 'widgets/empty_state.dart';
 import 'widgets/error_state.dart';
@@ -34,6 +38,28 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   void _submitSearch(String text) {
     if (text.trim().isEmpty) return;
     ref.read(searchProvider.notifier).search(text);
+  }
+
+  Future<void> _playTrack(TrackDto track) async {
+    final player = ref.read(audioPlayerProvider);
+    try {
+      await player.stop();
+      ref.read(currentTrackProvider.notifier).setTrack(track);
+      final streamUrl = '${AppConfig.apiBaseUrl}/stream/${track.trackId}';
+      await player.setAudioSource(
+        AudioSource.uri(
+          Uri.parse(streamUrl),
+          headers: {'X-API-Key': AppConfig.apiKey},
+        ),
+      );
+      await player.play();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Couldn't play this track")),
+        );
+      }
+    }
   }
 
   @override
@@ -102,9 +128,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                     final track = response.tracks[index];
                     return TrackListTile(
                       track: track,
-                      onTap: () {
-                        // Playback wired in Plan 02-03
-                      },
+                      onTap: () => _playTrack(track),
                     );
                   },
                 );
