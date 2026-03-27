@@ -61,7 +61,7 @@ final class QueueProvider extends $NotifierProvider<Queue, List<TrackDto>> {
   }
 }
 
-String _$queueHash() => r'0b2157129066ef634788e2744a72bc7b6ea81bda';
+String _$queueHash() => r'8a3b810f3e76941f7d5c1b7798d08c77535b1a1a';
 
 /// Manages the playback queue and keeps the [just_audio] player's internal
 /// playlist in sync with the [List<TrackDto>] state.
