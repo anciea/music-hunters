@@ -70,7 +70,7 @@ Plans:
 - [x] 03-01-PLAN.md — AudioHandler wrapping just_audio, QueueNotifier with ConcatenatingAudioSource, audio_service+audio_session init in main.dart, AndroidManifest declarations
 - [x] 03-02-PLAN.md — Full player DraggableScrollableSheet (album art, seek bar, controls), enhanced mini player (tap-to-expand, progress line, loading states), search screen refactor to QueueNotifier
 - [x] 03-03-PLAN.md — Queue bottom sheet (ReorderableListView, remove, reorder), long-press context menu on search tiles (Play Now, Play Next, Add to Queue)
-- [ ] 03-04-PLAN.md — Human verification: end-to-end playback, background audio, notification controls, queue management
+- [x] 03-04-PLAN.md — Human verification: end-to-end playback, background audio, notification controls, queue management
 
 ### Phase 4: Library
 **Goal**: Users can download tracks for offline use, manage local playlists, and review recently played tracks
