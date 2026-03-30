@@ -103,4 +103,20 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Claude Code / GSD workflow
+.claude/
+.planning/
 
+# MusicDL outputs
+musicdl_outputs/
+
+# Flutter build artifacts & non-Android platforms
+mobile/build/
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/ios/
+mobile/linux/
+mobile/macos/
+mobile/web/
+mobile/windows/
